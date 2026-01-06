@@ -19,6 +19,7 @@ import OwnerDashboard from "../features/owner/OwnerDashboard";
 import Header from "../components/layout/Header/Header";
 import OwnerProperties from "../features/owner/OwnerProperties";
 import OTPVerification from "../features/auth/components/OTPVerification";
+import AddPayment from "../features/owner/AddPayment";
 
 // Layout Components
 const MainLayout = ({ children }) => {
@@ -195,6 +196,15 @@ const AppRoutes = () => {
         element={
           <OwnerLayout>
             <OwnerProperties />
+          </OwnerLayout>
+        }
+      />
+
+      <Route
+        path="/owner/add-payment"
+        element={
+          <OwnerLayout>
+            <AddPayment />
           </OwnerLayout>
         }
       />

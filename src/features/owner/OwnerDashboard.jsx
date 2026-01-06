@@ -39,6 +39,7 @@ import Inquiries from "./Inquiries";
 import Analytics from "./Analytics";
 import OwnerPayments from "./OwnerPayments";
 import OwnerTenants from "./OwnerTenants";
+import AddPayment from "./AddPayment";
 
 function OwnerDashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -186,6 +187,12 @@ function OwnerDashboard() {
       icon: CreditCard,
       active: activeSection === "payments",
     },
+    {
+      id: "addpayment",
+      label: "Tenant Rent Pay",
+      icon: Home,
+      active: activeSection === "addpayment",
+    },
   ];
 
   // Close dropdowns when clicking outside
@@ -256,6 +263,8 @@ function OwnerDashboard() {
         return <OwnerPayments />;
       case "tenants":
         return <OwnerTenants />;
+      case "addpayment":
+        return <AddPayment />;
       case "dashboard":
       default:
         return (
