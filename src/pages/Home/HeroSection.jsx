@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Search, MapPin, Home, IndianRupee, ChevronDown } from 'lucide-react';
-import logo from '../../assets/images/logo.png';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Search, MapPin, Home, IndianRupee, ChevronDown } from "lucide-react";
+import logo from "../../assets/images/logo.png";
 
 const HeroSection = () => {
   return (
@@ -28,21 +28,24 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-
           {/* Logo Section */}
           <div className="mb-8">
-
-            <img src={logo} alt="Puneri Homes Logo" className="mx-auto max-h-24" />
+            <img
+              src={logo}
+              alt="Puneri Homes Logo"
+              className="mx-auto max-h-24"
+            />
             <div className="h-1 w-32 mx-auto bg-gradient-to-r from-yellow-500 to-yellow-300 rounded-full"></div>
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-            Find Your Perfect <span className="text-yellow-300">Home</span> in{' '}
+            Find Your Perfect <span className="text-yellow-300">Home</span> in{" "}
             <span className="text-gray-300">Pune</span>
           </h2>
 
           <p className="text-xl mb-8 text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Connect directly with verified owners. No brokers, no hidden charges.
+            Connect directly with verified owners. No brokers, no hidden
+            charges.
             <span className="block text-yellow-300 font-semibold mt-2">
               Your Trust, Our Priority
             </span>
@@ -75,18 +78,41 @@ const HeroSection = () => {
                     <div className="flex items-center px-4 py-3">
                       <MapPin className="w-5 h-5 text-yellow-400 mr-3" />
                       <div className="flex-1 relative">
-                        <label className="block text-xs text-gray-400 mb-1">Location</label>
+                        <label className="block text-xs text-gray-400 mb-1">
+                          Location
+                        </label>
                         <div className="relative">
                           <select className="w-full bg-black border border-yellow-500/40 rounded-lg px-3 py-2 text-white focus:outline-none text-sm focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 appearance-none pr-10">
-                            <option value="" className="bg-black">Select Location</option>
-                            <option value="koregaon-park" className="bg-black">Koregaon Park</option>
-                            <option value="baner" className="bg-black">Baner</option>
-                            <option value="hinjewadi" className="bg-black">Hinjewadi</option>
-                            <option value="viman-nagar" className="bg-black">Viman Nagar</option>
-                            <option value="kharadi" className="bg-black">Kharadi</option>
-                            <option value="aundh" className="bg-black">Aundh</option>
-                            <option value="wakad" className="bg-black">Wakad</option>
-                            <option value="pimple-saudagar" className="bg-black">Pimple Saudagar</option>
+                            <option value="" className="bg-black">
+                              Select Location
+                            </option>
+                            <option value="koregaon-park" className="bg-black">
+                              Koregaon Park
+                            </option>
+                            <option value="baner" className="bg-black">
+                              Baner
+                            </option>
+                            <option value="hinjewadi" className="bg-black">
+                              Hinjewadi
+                            </option>
+                            <option value="viman-nagar" className="bg-black">
+                              Viman Nagar
+                            </option>
+                            <option value="kharadi" className="bg-black">
+                              Kharadi
+                            </option>
+                            <option value="aundh" className="bg-black">
+                              Aundh
+                            </option>
+                            <option value="wakad" className="bg-black">
+                              Wakad
+                            </option>
+                            <option
+                              value="pimple-saudagar"
+                              className="bg-black"
+                            >
+                              Pimple Saudagar
+                            </option>
                           </select>
                           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
                             <ChevronDown className="w-4 h-4 text-yellow-400" />
@@ -101,17 +127,35 @@ const HeroSection = () => {
                     <div className="flex items-center px-4 py-3">
                       <Home className="w-5 h-5 text-yellow-400 mr-3" />
                       <div className="flex-1 relative">
-                        <label className="block text-xs text-gray-400 mb-1">Flat Type</label>
+                        <label className="block text-xs text-gray-400 mb-1">
+                          Flat Type
+                        </label>
                         <div className="relative">
                           <select className="w-full bg-black border border-yellow-500/40 rounded-lg px-3 py-2 text-white focus:outline-none text-sm focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 appearance-none pr-10">
-                            <option value="" className="bg-black">Select Flat Type</option>
-                            <option value="1bhk" className="bg-black">1 BHK</option>
-                            <option value="2bhk" className="bg-black">2 BHK</option>
-                            <option value="3bhk" className="bg-black">3 BHK</option>
-                            <option value="4bhk" className="bg-black">4 BHK</option>
-                            <option value="studio" className="bg-black">Studio</option>
-                            <option value="penthouse" className="bg-black">Penthouse</option>
-                            <option value="villa" className="bg-black">Villa</option>
+                            <option value="" className="bg-black">
+                              Select Flat Type
+                            </option>
+                            <option value="1bhk" className="bg-black">
+                              1 BHK
+                            </option>
+                            <option value="2bhk" className="bg-black">
+                              2 BHK
+                            </option>
+                            <option value="3bhk" className="bg-black">
+                              3 BHK
+                            </option>
+                            <option value="4bhk" className="bg-black">
+                              4 BHK
+                            </option>
+                            <option value="studio" className="bg-black">
+                              Studio
+                            </option>
+                            <option value="penthouse" className="bg-black">
+                              Penthouse
+                            </option>
+                            <option value="villa" className="bg-black">
+                              Villa
+                            </option>
                           </select>
                           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
                             <ChevronDown className="w-4 h-4 text-yellow-400" />
@@ -126,15 +170,29 @@ const HeroSection = () => {
                     <div className="flex items-center px-4 py-3">
                       <IndianRupee className="w-5 h-5 text-yellow-400 mr-3" />
                       <div className="flex-1 relative">
-                        <label className="block text-xs text-gray-400 mb-1">Budget</label>
+                        <label className="block text-xs text-gray-400 mb-1">
+                          Budget
+                        </label>
                         <div className="relative">
                           <select className="w-full bg-black border border-yellow-500/40 rounded-lg px-3 py-2 text-white focus:outline-none text-sm focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 appearance-none pr-10">
-                            <option value="" className="bg-black">Select Budget</option>
-                            <option value="30-50" className="bg-black">₹30-50 Lakhs</option>
-                            <option value="50-80" className="bg-black">₹50-80 Lakhs</option>
-                            <option value="80-120" className="bg-black">₹80L - 1.2 Cr</option>
-                            <option value="120-200" className="bg-black">₹1.2 - 2 Cr</option>
-                            <option value="200+" className="bg-black">₹2 Cr+</option>
+                            <option value="" className="bg-black">
+                              Select Budget
+                            </option>
+                            <option value="30-50" className="bg-black">
+                              ₹30-50 Lakhs
+                            </option>
+                            <option value="50-80" className="bg-black">
+                              ₹50-80 Lakhs
+                            </option>
+                            <option value="80-120" className="bg-black">
+                              ₹80L - 1.2 Cr
+                            </option>
+                            <option value="120-200" className="bg-black">
+                              ₹1.2 - 2 Cr
+                            </option>
+                            <option value="200+" className="bg-black">
+                              ₹2 Cr+
+                            </option>
                           </select>
                           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
                             <ChevronDown className="w-4 h-4 text-yellow-400" />
@@ -145,10 +203,9 @@ const HeroSection = () => {
                   </div>
 
                   {/* Search Button */}
-                  <div className="md:w-auto">
-                    <button className="w-full h-full bg-gradient-to-r from-yellow-500 to-yellow-400 hover:from-yellow-600 hover:to-yellow-500 text-gray-900 font-bold px-6 py-4 md:py-0 m-1 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl min-h-[60px]">
-                      <Search className="" />
-
+                  <div className="md:w-auto flex items-center justify-center">
+                    <button className="bg-gradient-to-r from-yellow-500 to-yellow-400 hover:from-yellow-600 hover:to-yellow-500 text-gray-900 font-semibold px-3 py-1.5 rounded-md transition-all duration-200 flex items-center justify-center shadow-md hover:shadow-lg min-h-[80px]">
+                      <Search className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -165,7 +222,9 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-200 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></div>
               <span className="relative flex items-center space-x-2">
                 <span>Browse Properties</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <span className="group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
               </span>
             </Link>
 
@@ -176,7 +235,9 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/0 via-yellow-500/5 to-yellow-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <span className="relative flex items-center space-x-2">
                 <span>List Your Property</span>
-                <span className="text-yellow-300 group-hover:text-yellow-200">🏠</span>
+                <span className="text-yellow-300 group-hover:text-yellow-200">
+                  🏠
+                </span>
               </span>
             </Link>
           </div>
@@ -185,18 +246,14 @@ const HeroSection = () => {
           <div className="mt-16">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {[
-                { number: '500+', label: 'Properties Listed' },
-                { number: '98%', label: 'Verified Owners' },
-                { number: '₹49', label: 'Contact Unlock' },
-                { number: '0%', label: 'Broker Fee' },
+                { number: "500+", label: "Properties Listed" },
+                { number: "98%", label: "Verified Owners" },
+                { number: "₹49", label: "Contact Unlock" },
+                { number: "0%", label: "Broker Fee" },
               ].map((stat, index) => (
-                <div
-                  key={index}
-                  className="text-center group"
-                >
+                <div key={index} className="text-center group">
                   {/* Background with subtle gold accent */}
                   <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 border border-yellow-500/10 rounded-xl p-4 md:p-6 shadow-lg hover:shadow-yellow-500/10 hover:border-yellow-500/20 transition-all duration-300">
-
                     {/* Golden accent corner */}
                     <div className="absolute top-0 right-0 w-3 h-3 border-t border-r border-yellow-500/30 rounded-tr-xl"></div>
                     <div className="absolute bottom-0 left-0 w-3 h-3 border-b border-l border-yellow-500/30 rounded-bl-xl"></div>

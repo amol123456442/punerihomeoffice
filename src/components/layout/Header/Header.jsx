@@ -1,15 +1,40 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../../app/hooks';
-import logo from '../../../assets/images/logo.png';
-import qrcode from '../../../assets/images/images.png';
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../../app/hooks";
+import logo from "../../../assets/images/logo.png";
+import qrcode from "../../../assets/images/images.png";
 import {
-  Menu, X, User, Search, Bell, Home, Building2,
-  ChevronDown, Check, ChevronRight,
-  Users, UserCheck, XCircle, Shield, Phone, HelpCircle,
-  Download, Star, MapPin, Calendar, MessageSquare, Heart, Eye, Filter,
-  FileText, Newspaper, BarChart3, Mail, Upload, Eye as EyeIcon
-} from 'lucide-react';
+  Menu,
+  X,
+  User,
+  Search,
+  Bell,
+  Home,
+  Building2,
+  ChevronDown,
+  Check,
+  ChevronRight,
+  Users,
+  UserCheck,
+  XCircle,
+  Shield,
+  Phone,
+  HelpCircle,
+  Download,
+  Star,
+  MapPin,
+  Calendar,
+  MessageSquare,
+  Heart,
+  Eye,
+  Filter,
+  FileText,
+  Newspaper,
+  BarChart3,
+  Mail,
+  Upload,
+  Eye as EyeIcon,
+} from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,8 +56,8 @@ const Header = () => {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   // Close mobile menu when screen resizes to desktop
@@ -45,15 +70,18 @@ const Header = () => {
   // Close search when clicking outside on mobile
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isSearchOpen && searchContainerRef.current &&
+      if (
+        isSearchOpen &&
+        searchContainerRef.current &&
         !searchContainerRef.current.contains(event.target) &&
-        !event.target.closest('button[aria-label="Search"]')) {
+        !event.target.closest('button[aria-label="Search"]')
+      ) {
         setIsSearchOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isSearchOpen]);
 
   // Focus search input when opened
@@ -71,7 +99,7 @@ const Header = () => {
     "House for rent in Pune",
     "Villa for rent in Pune",
     "PG in Pune",
-    "Office Space in Pune"
+    "Office Space in Pune",
   ];
 
   // Budget ranges for Rent dropdown (from your image content)
@@ -79,7 +107,7 @@ const Header = () => {
     "Under ₹ 10,000",
     "₹ 10,000 - ₹ 15,000",
     "₹ 15,000 - ₹ 25,000",
-    "Above ₹ 25,000"
+    "Above ₹ 25,000",
   ];
 
   // Popular choices for Rent dropdown (from your image content)
@@ -88,7 +116,7 @@ const Header = () => {
     "Verified Properties",
     "Furnished Homes",
     "Bachelor Friendly Homes",
-    "Immediately Available"
+    "Immediately Available",
   ];
 
   // Owner offerings data (from your image content)
@@ -96,7 +124,7 @@ const Header = () => {
     {
       icon: <Upload className="w-4 h-4" />,
       title: "Post Property",
-      description: "List your property free"
+      description: "List your property free",
     },
     // {
     //   icon: <EyeIcon className="w-4 h-4" />,
@@ -121,8 +149,8 @@ const Header = () => {
     {
       icon: <Newspaper className="w-4 h-4" />,
       title: "Articles & News",
-      description: "Real estate updates"
-    }
+      description: "Real estate updates",
+    },
   ];
 
   // Services data
@@ -131,31 +159,31 @@ const Header = () => {
       icon: <Shield className="w-4 h-4" />,
       title: "Verified Properties",
       description: "100% verified listings",
-      slug: "verified-properties"
+      slug: "verified-properties",
     },
     {
       icon: <Phone className="w-4 h-4" />,
       title: "24/7 Support",
       description: "Always here to help",
-      slug: "support"
+      slug: "support",
     },
     {
       icon: <Star className="w-4 h-4" />,
       title: "Premium Listings",
       description: "Top quality properties",
-      slug: "premium-listings"
+      slug: "premium-listings",
     },
     {
       icon: <MapPin className="w-4 h-4" />,
       title: "Area Experts",
       description: "Local knowledge",
-      slug: "area-experts"
+      slug: "area-experts",
     },
     {
       icon: <Calendar className="w-4 h-4" />,
       title: "Flexible Viewings",
       description: "Schedule as per your convenience",
-      slug: "schedule-viewing"
+      slug: "schedule-viewing",
     },
     // {
     //   icon: <MessageSquare className="w-4 h-4" />,
@@ -170,11 +198,17 @@ const Header = () => {
     setIsMenuOpen(false);
 
     // Extract property type for query params
-    const type = propertyType.toLowerCase().includes('flat') ? 'flat' :
-      propertyType.toLowerCase().includes('house') ? 'house' :
-        propertyType.toLowerCase().includes('villa') ? 'villa' :
-          propertyType.toLowerCase().includes('pg') ? 'pg' :
-            propertyType.toLowerCase().includes('office') ? 'office' : 'all';
+    const type = propertyType.toLowerCase().includes("flat")
+      ? "flat"
+      : propertyType.toLowerCase().includes("house")
+      ? "house"
+      : propertyType.toLowerCase().includes("villa")
+      ? "villa"
+      : propertyType.toLowerCase().includes("pg")
+      ? "pg"
+      : propertyType.toLowerCase().includes("office")
+      ? "office"
+      : "all";
 
     navigate(`/properties?propertyType=${type}`);
   };
@@ -186,16 +220,16 @@ const Header = () => {
     // Parse budget range for query params
     let minPrice, maxPrice;
 
-    if (budget.includes('Under')) {
+    if (budget.includes("Under")) {
       minPrice = 0;
       maxPrice = 10000;
-    } else if (budget.includes('Above')) {
+    } else if (budget.includes("Above")) {
       minPrice = 25000;
       maxPrice = 9999999;
     } else {
-      const parts = budget.split(' - ');
-      minPrice = parseInt(parts[0].replace('₹', '').replace(',', '').trim());
-      maxPrice = parseInt(parts[1].replace('₹', '').replace(',', '').trim());
+      const parts = budget.split(" - ");
+      minPrice = parseInt(parts[0].replace("₹", "").replace(",", "").trim());
+      maxPrice = parseInt(parts[1].replace("₹", "").replace(",", "").trim());
     }
 
     navigate(`/properties?minPrice=${minPrice}&maxPrice=${maxPrice}`);
@@ -206,20 +240,20 @@ const Header = () => {
     setIsMenuOpen(false);
 
     const filterMap = {
-      'Owner Properties': 'owner',
-      'Verified Properties': 'verified',
-      'Furnished Homes': 'furnished',
-      'Bachelor Friendly Homes': 'bachelor',
-      'Immediately Available': 'available'
+      "Owner Properties": "owner",
+      "Verified Properties": "verified",
+      "Furnished Homes": "furnished",
+      "Bachelor Friendly Homes": "bachelor",
+      "Immediately Available": "available",
     };
 
-    navigate(`/properties?filter=${filterMap[choice] || 'all'}`);
+    navigate(`/properties?filter=${filterMap[choice] || "all"}`);
   };
 
   const handleServiceClick = (service) => {
     setIsServicesMenuOpen(false);
     setIsMenuOpen(false);
-    navigate(`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`);
+    navigate(`/services/${service.title.toLowerCase().replace(/\s+/g, "-")}`);
   };
 
   // Handle owner offering click
@@ -228,22 +262,22 @@ const Header = () => {
     setIsMenuOpen(false);
 
     const routeMap = {
-      'Post Property': '/addownerproperty',
-      'View Responses': '/owner/responses',
-      'Owner Services': '/owner-services',
+      "Post Property": "/addownerproperty",
+      "View Responses": "/owner/responses",
+      "Owner Services": "/owner-services",
       // 'Insights': '/owner/insights',
-      'My9sacres': '/my9sacres',
-      'Articles & News': '/articles'
+      My9sacres: "/my9sacres",
+      "Articles & News": "/articles",
     };
 
-    navigate(routeMap[offering.title] || '/for-owner');
+    navigate(routeMap[offering.title] || "/for-owner");
   };
 
   // Handle "View All Rental Properties" click
   const handleViewAllRentals = () => {
     setIsRentMenuOpen(false);
     setIsMenuOpen(false);
-    navigate('/properties');
+    navigate("/properties");
   };
 
   const handleCloseAllMenus = () => {
@@ -277,7 +311,7 @@ const Header = () => {
   };
 
   const handleSearchKeyDown = (e) => {
-    if (e.key === 'Escape') {
+    if (e.key === "Escape") {
       setIsSearchOpen(false);
     }
   };
@@ -285,7 +319,7 @@ const Header = () => {
   // Handle direct navigation to properties page
   const handlePropertiesClick = () => {
     setIsMenuOpen(false);
-    navigate('/properties');
+    navigate("/properties");
   };
 
   return (
@@ -295,16 +329,23 @@ const Header = () => {
 
       <div className="container mx-auto px-2 sm:px-4">
         <div className="flex items-center justify-between h-14 lg:h-16">
-
           {/* Logo - Left aligned */}
-          <div className="flex items-center cursor-pointer" onClick={() => navigate('/')}>
-            <img src={logo} alt="Puneri Homes Logo" className="h-10 lg:h-12 w-auto" />
+          <div
+            className="flex items-center cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <img
+              src={logo}
+              alt="Puneri Homes Logo"
+              className="h-10 lg:h-12 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {/* Services Dropdown Menu - Desktop */}
-            <div className="relative group"
+            <div
+              className="relative group"
               onMouseEnter={() => setIsServicesMenuOpen(true)}
               onMouseLeave={() => setIsServicesMenuOpen(false)}
             >
@@ -314,18 +355,26 @@ const Header = () => {
               >
                 <Shield className="w-4 h-4 group-hover:text-yellow-300 transition-colors" />
                 <span>Services</span>
-                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isServicesMenuOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`w-3 h-3 transition-transform duration-200 ${
+                    isServicesMenuOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
 
               {/* Services Desktop Dropdown Container */}
               {isServicesMenuOpen && (
                 <div className="absolute left-0 top-full mt-0 w-[400px] bg-gradient-to-b from-gray-800 to-gray-900 border border-yellow-500/30 rounded-b-xl shadow-2xl shadow-black/50 overflow-hidden z-50">
                   <div className="p-4">
-                    <h3 className="text-yellow-300 font-bold mb-3 text-sm uppercase tracking-wider">Our Premium Services</h3>
+                    <h3 className="text-yellow-300 font-bold mb-3 text-sm uppercase tracking-wider">
+                      Our Premium Services
+                    </h3>
                     <div className="grid grid-cols-2 gap-3">
                       {services.map((service, index) => {
                         // Generate slug from title
-                        const slug = service.title.toLowerCase().replace(/\s+/g, '-');
+                        const slug = service.title
+                          .toLowerCase()
+                          .replace(/\s+/g, "-");
 
                         return (
                           <Link
@@ -338,25 +387,30 @@ const Header = () => {
                             className="flex items-start space-x-2 p-3 rounded-lg text-left bg-gray-900/50 hover:bg-gray-800/70 border border-yellow-500/10 hover:border-yellow-500/30 transition-all duration-200 group"
                           >
                             <div className="p-1.5 bg-yellow-500/10 rounded-lg group-hover:bg-yellow-500/20 transition-colors">
-                              {React.cloneElement(service.icon, { className: "w-4 h-4 text-yellow-400" })}
+                              {React.cloneElement(service.icon, {
+                                className: "w-4 h-4 text-yellow-400",
+                              })}
                             </div>
                             <div>
-                              <div className="text-yellow-300 font-bold text-xs">{service.title}</div>
-                              <div className="text-gray-400 text-xs mt-0.5">{service.description}</div>
+                              <div className="text-yellow-300 font-bold text-xs">
+                                {service.title}
+                              </div>
+                              <div className="text-gray-400 text-xs mt-0.5">
+                                {service.description}
+                              </div>
                             </div>
                           </Link>
                         );
                       })}
                     </div>
                   </div>
-
-
                 </div>
               )}
             </div>
 
             {/* Rent Dropdown Menu - Desktop */}
-            <div className="relative group"
+            <div
+              className="relative group"
               onMouseEnter={() => setIsRentMenuOpen(true)}
               onMouseLeave={() => setIsRentMenuOpen(false)}
             >
@@ -366,7 +420,11 @@ const Header = () => {
               >
                 <Users className="w-4 h-4" />
                 <span>For Tenants</span>
-                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isRentMenuOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`w-3 h-3 transition-transform duration-200 ${
+                    isRentMenuOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
 
               {/* Desktop Dropdown Container */}
@@ -375,7 +433,9 @@ const Header = () => {
                   <div className="grid grid-cols-3 gap-0">
                     {/* Popular Choices Column */}
                     <div className="p-3 border-r border-yellow-500/20">
-                      <h3 className="text-yellow-300 font-bold mb-2 text-xs uppercase tracking-wider">POPULAR</h3>
+                      <h3 className="text-yellow-300 font-bold mb-2 text-xs uppercase tracking-wider">
+                        POPULAR
+                      </h3>
                       <ul className="space-y-1">
                         {popularChoices.map((choice, index) => (
                           <li key={index}>
@@ -393,7 +453,9 @@ const Header = () => {
 
                     {/* Property Types Column */}
                     <div className="p-3 border-r border-yellow-500/20">
-                      <h3 className="text-yellow-300 font-bold mb-2 text-xs uppercase tracking-wider">PROPERTY TYPES</h3>
+                      <h3 className="text-yellow-300 font-bold mb-2 text-xs uppercase tracking-wider">
+                        PROPERTY TYPES
+                      </h3>
                       <ul className="space-y-1">
                         {propertyTypes.map((type, index) => (
                           <li key={index}>
@@ -411,7 +473,9 @@ const Header = () => {
 
                     {/* Budget Column */}
                     <div className="p-3">
-                      <h3 className="text-yellow-300 font-bold mb-2 text-xs uppercase tracking-wider">BUDGET</h3>
+                      <h3 className="text-yellow-300 font-bold mb-2 text-xs uppercase tracking-wider">
+                        BUDGET
+                      </h3>
                       <ul className="space-y-1">
                         {budgetRanges.map((budget, index) => (
                           <li key={index}>
@@ -445,7 +509,8 @@ const Header = () => {
             </div>
 
             {/* Owner Dropdown Menu - Desktop */}
-            <div className="relative group"
+            <div
+              className="relative group"
               onMouseEnter={() => setIsOwnerMenuOpen(true)}
               onMouseLeave={() => setIsOwnerMenuOpen(false)}
             >
@@ -455,7 +520,11 @@ const Header = () => {
               >
                 <UserCheck className="w-4 h-4 group-hover:text-yellow-300 transition-colors" />
                 <span>For Owner</span>
-                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isOwnerMenuOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`w-3 h-3 transition-transform duration-200 ${
+                    isOwnerMenuOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
 
               {/* Owner Desktop Dropdown Container */}
@@ -463,8 +532,12 @@ const Header = () => {
                 <div className="absolute left-0 top-full mt-0 w-[450px] bg-gradient-to-b from-gray-800 to-gray-900 border border-yellow-500/30 rounded-b-xl shadow-2xl shadow-black/50 overflow-hidden z-50">
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-yellow-300 font-bold text-sm uppercase tracking-wider">OWNER OFFERINGS</h3>
-                      <h3 className="text-yellow-300 font-bold text-sm uppercase tracking-wider">INSIGHTS</h3>
+                      <h3 className="text-yellow-300 font-bold text-sm uppercase tracking-wider">
+                        OWNER OFFERINGS
+                      </h3>
+                      <h3 className="text-yellow-300 font-bold text-sm uppercase tracking-wider">
+                        INSIGHTS
+                      </h3>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
@@ -477,11 +550,17 @@ const Header = () => {
                             className="flex items-start space-x-2 p-3 rounded-lg text-left bg-gray-900/50 hover:bg-gray-800/70 border border-yellow-500/10 hover:border-yellow-500/30 transition-all duration-200 group w-full"
                           >
                             <div className="p-1.5 bg-yellow-500/10 rounded-lg group-hover:bg-yellow-500/20 transition-colors flex-shrink-0">
-                              {React.cloneElement(offering.icon, { className: "w-4 h-4 text-yellow-400" })}
+                              {React.cloneElement(offering.icon, {
+                                className: "w-4 h-4 text-yellow-400",
+                              })}
                             </div>
                             <div className="flex-1">
-                              <div className="text-yellow-300 font-bold text-xs">{offering.title}</div>
-                              <div className="text-gray-400 text-xs mt-0.5">{offering.description}</div>
+                              <div className="text-yellow-300 font-bold text-xs">
+                                {offering.title}
+                              </div>
+                              <div className="text-gray-400 text-xs mt-0.5">
+                                {offering.description}
+                              </div>
                             </div>
                           </button>
                         ))}
@@ -496,11 +575,17 @@ const Header = () => {
                             className="flex items-start space-x-2 p-3 rounded-lg text-left bg-gray-900/50 hover:bg-gray-800/70 border border-yellow-500/10 hover:border-yellow-500/30 transition-all duration-200 group w-full"
                           >
                             <div className="p-1.5 bg-yellow-500/10 rounded-lg group-hover:bg-yellow-500/20 transition-colors flex-shrink-0">
-                              {React.cloneElement(offering.icon, { className: "w-4 h-4 text-yellow-400" })}
+                              {React.cloneElement(offering.icon, {
+                                className: "w-4 h-4 text-yellow-400",
+                              })}
                             </div>
                             <div className="flex-1">
-                              <div className="text-yellow-300 font-bold text-xs">{offering.title}</div>
-                              <div className="text-gray-400 text-xs mt-0.5">{offering.description}</div>
+                              <div className="text-yellow-300 font-bold text-xs">
+                                {offering.title}
+                              </div>
+                              <div className="text-gray-400 text-xs mt-0.5">
+                                {offering.description}
+                              </div>
                             </div>
                           </button>
                         ))}
@@ -544,9 +629,7 @@ const Header = () => {
 
             {/* Download App Section */}
             <div className="relative group">
-              <button
-                className="flex items-center space-x-1 px-3 py-2.5 rounded-lg text-gray-300 hover:text-yellow-300 hover:bg-gray-800/50 font-medium transition-all duration-200 group"
-              >
+              <button className="flex items-center space-x-1 px-3 py-2.5 rounded-lg text-gray-300 hover:text-yellow-300 hover:bg-gray-800/50 font-medium transition-all duration-200 group">
                 <Download className="w-4 h-4 group-hover:text-yellow-300 transition-colors" />
                 <span>Download App</span>
               </button>
@@ -559,8 +642,12 @@ const Header = () => {
                       <Home className="w-6 h-6 text-gray-900" />
                     </div>
                     <div>
-                      <h3 className="text-yellow-300 font-bold text-sm">Puneri Homes App</h3>
-                      <p className="text-gray-400 text-xs">Find your perfect home on the go</p>
+                      <h3 className="text-yellow-300 font-bold text-sm">
+                        Puneri Homes App
+                      </h3>
+                      <p className="text-gray-400 text-xs">
+                        Find your perfect home on the go
+                      </p>
                     </div>
                   </div>
 
@@ -576,7 +663,9 @@ const Header = () => {
                       </div>
                       <div className="flex-1">
                         <div className="text-gray-300 text-xs">GET IT ON</div>
-                        <div className="text-yellow-300 font-bold text-sm">Google Play</div>
+                        <div className="text-yellow-300 font-bold text-sm">
+                          Google Play
+                        </div>
                       </div>
                     </a>
 
@@ -590,17 +679,27 @@ const Header = () => {
                         <span className="text-white font-bold text-xs">A</span>
                       </div>
                       <div className="flex-1">
-                        <div className="text-gray-300 text-xs">Download on the</div>
-                        <div className="text-yellow-300 font-bold text-sm">App Store</div>
+                        <div className="text-gray-300 text-xs">
+                          Download on the
+                        </div>
+                        <div className="text-yellow-300 font-bold text-sm">
+                          App Store
+                        </div>
                       </div>
                     </a>
                   </div>
 
                   <div className="mt-3 pt-3 border-t border-yellow-500/20">
-                    <p className="text-gray-400 text-xs text-center">Scan QR Code to Download</p>
+                    <p className="text-gray-400 text-xs text-center">
+                      Scan QR Code to Download
+                    </p>
                     <div className="flex justify-center mt-2">
                       <div className="w-26 h-26 bg-white rounded-lg p-1">
-                        <img src={qrcode} alt="QR Code" className="w-full h-full object-contain" />
+                        <img
+                          src={qrcode}
+                          alt="QR Code"
+                          className="w-full h-full object-contain"
+                        />
                       </div>
                     </div>
                   </div>
@@ -625,7 +724,8 @@ const Header = () => {
                   <div className="absolute top-1 right-1 w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse"></div>
                 </button>
 
-                <div className="relative"
+                <div
+                  className="relative"
                   onMouseEnter={() => setIsUserMenuOpen(true)}
                   onMouseLeave={() => setIsUserMenuOpen(false)}
                 >
@@ -636,21 +736,35 @@ const Header = () => {
                     <div className="w-7 h-7 bg-gradient-to-br from-yellow-500/20 to-yellow-500/10 border border-yellow-500/30 rounded-full flex items-center justify-center">
                       <User className="w-3.5 h-3.5" />
                     </div>
-                    <span className="font-medium text-sm">{user?.name?.split(' ')[0] || 'User'}</span>
-                    <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isUserMenuOpen ? 'rotate-180' : ''}`} />
+                    <span className="font-medium text-sm">
+                      {user?.name?.split(" ")[0] || "User"}
+                    </span>
+                    <ChevronDown
+                      className={`w-3 h-3 transition-transform duration-200 ${
+                        isUserMenuOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
 
                   {/* User Dropdown Menu */}
                   {isUserMenuOpen && (
                     <div className="absolute right-0 mt-1 w-48 bg-gradient-to-b from-gray-800 to-gray-900 border border-yellow-500/30 rounded-xl shadow-2xl shadow-black/50 overflow-hidden z-50">
                       <div className="p-3 border-b border-yellow-500/20">
-                        <div className="text-xs font-medium text-gray-300">Signed in as</div>
-                        <div className="text-yellow-300 font-bold text-sm truncate">{user?.email}</div>
+                        <div className="text-xs font-medium text-gray-300">
+                          Signed in as
+                        </div>
+                        <div className="text-yellow-300 font-bold text-sm truncate">
+                          {user?.email}
+                        </div>
                       </div>
 
                       <div className="p-1.5">
                         <Link
-                          to={user?.role === 'tenant' ? '/tenant/dashboard' : '/owner/dashboard'}
+                          to={
+                            user?.role === "tenant"
+                              ? "/tenant/dashboard"
+                              : "/owner/dashboard"
+                          }
                           className="flex items-center space-x-2 px-2.5 py-2 rounded-lg text-gray-300 hover:text-yellow-300 hover:bg-gray-800/50 transition-all duration-200 text-sm"
                           onClick={() => setIsUserMenuOpen(false)}
                         >
@@ -753,11 +867,19 @@ const Header = () => {
 
         {/* Search Bar - Opens on click */}
         {isSearchOpen && (
-          <div ref={searchContainerRef} className={`py-2 animate-fadeIn ${isMobile ? 'border-t border-yellow-500/20' : ''}`}>
+          <div
+            ref={searchContainerRef}
+            className={`py-2 animate-fadeIn ${
+              isMobile ? "border-t border-yellow-500/20" : ""
+            }`}
+          >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-yellow-300 rounded-lg blur-sm opacity-20"></div>
               <div className="relative bg-gray-800 border border-yellow-500/30 rounded-lg overflow-hidden">
-                <form onSubmit={handleSearchSubmit} className="flex items-center">
+                <form
+                  onSubmit={handleSearchSubmit}
+                  className="flex items-center"
+                >
                   <Search className="w-5 h-5 text-gray-400 ml-3" />
                   <input
                     ref={searchInputRef}
@@ -817,7 +939,11 @@ const Header = () => {
                       <Shield className="w-4 h-4" />
                       <span className="font-medium">Services</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesMenuOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        isServicesMenuOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
 
                   {/* Mobile Services Submenu */}
@@ -831,9 +957,13 @@ const Header = () => {
                             className="flex flex-col items-center p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/70 border border-yellow-500/10 hover:border-yellow-500/30 transition-all duration-200"
                           >
                             <div className="p-1.5 bg-yellow-500/10 rounded-lg mb-1">
-                              {React.cloneElement(service.icon, { className: "w-4 h-4 text-yellow-400" })}
+                              {React.cloneElement(service.icon, {
+                                className: "w-4 h-4 text-yellow-400",
+                              })}
                             </div>
-                            <span className="text-yellow-300 font-bold text-xs text-center">{service.title}</span>
+                            <span className="text-yellow-300 font-bold text-xs text-center">
+                              {service.title}
+                            </span>
                           </button>
                         ))}
                       </div>
@@ -861,7 +991,11 @@ const Header = () => {
                       <Users className="w-4 h-4" />
                       <span className="font-medium">For Tenants</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isRentMenuOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        isRentMenuOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
 
                   {/* Mobile Rent Submenu */}
@@ -869,7 +1003,9 @@ const Header = () => {
                     <div className="bg-gray-900/50 border-t border-yellow-500/10">
                       {/* Popular Choices */}
                       <div className="px-4 py-2">
-                        <h4 className="text-yellow-300 font-bold mb-1 text-xs">POPULAR</h4>
+                        <h4 className="text-yellow-300 font-bold mb-1 text-xs">
+                          POPULAR
+                        </h4>
                         <div className="space-y-1">
                           {popularChoices.slice(0, 3).map((choice, index) => (
                             <button
@@ -886,7 +1022,9 @@ const Header = () => {
 
                       {/* Property Types */}
                       <div className="px-4 py-2">
-                        <h4 className="text-yellow-300 font-bold mb-1 text-xs">PROPERTY TYPES</h4>
+                        <h4 className="text-yellow-300 font-bold mb-1 text-xs">
+                          PROPERTY TYPES
+                        </h4>
                         <div className="space-y-1">
                           {propertyTypes.slice(0, 3).map((type, index) => (
                             <button
@@ -902,7 +1040,9 @@ const Header = () => {
 
                       {/* Budget */}
                       <div className="px-4 py-2">
-                        <h4 className="text-yellow-300 font-bold mb-1 text-xs">BUDGET</h4>
+                        <h4 className="text-yellow-300 font-bold mb-1 text-xs">
+                          BUDGET
+                        </h4>
                         <div className="space-y-1">
                           {budgetRanges.slice(0, 3).map((budget, index) => (
                             <button
@@ -940,14 +1080,20 @@ const Header = () => {
                       <UserCheck className="w-4 h-4" />
                       <span className="font-medium">For Owner</span>
                     </div>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOwnerMenuOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-200 ${
+                        isOwnerMenuOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
 
                   {/* Mobile Owner Submenu */}
                   {isOwnerMenuOpen && (
                     <div className="bg-gray-900/50 border-t border-yellow-500/10">
                       <div className="px-4 py-3">
-                        <h4 className="text-yellow-300 font-bold mb-2 text-xs text-center">OWNER OFFERINGS</h4>
+                        <h4 className="text-yellow-300 font-bold mb-2 text-xs text-center">
+                          OWNER OFFERINGS
+                        </h4>
                         <div className="grid grid-cols-2 gap-2">
                           {ownerOfferings.slice(0, 3).map((offering, index) => (
                             <button
@@ -956,10 +1102,16 @@ const Header = () => {
                               className="flex flex-col items-center p-2 rounded-lg bg-gray-800/50 hover:bg-gray-700/70 border border-yellow-500/10 hover:border-yellow-500/30 transition-all duration-200"
                             >
                               <div className="p-1.5 bg-yellow-500/10 rounded-lg mb-1">
-                                {React.cloneElement(offering.icon, { className: "w-4 h-4 text-yellow-400" })}
+                                {React.cloneElement(offering.icon, {
+                                  className: "w-4 h-4 text-yellow-400",
+                                })}
                               </div>
-                              <span className="text-yellow-300 font-bold text-xs text-center">{offering.title}</span>
-                              <span className="text-gray-400 text-[10px] text-center mt-0.5">{offering.description}</span>
+                              <span className="text-yellow-300 font-bold text-xs text-center">
+                                {offering.title}
+                              </span>
+                              <span className="text-gray-400 text-[10px] text-center mt-0.5">
+                                {offering.description}
+                              </span>
                             </button>
                           ))}
                         </div>
@@ -984,7 +1136,9 @@ const Header = () => {
                   <div className="px-3 py-3">
                     <div className="flex items-center space-x-2 mb-2">
                       <Download className="w-4 h-4 text-yellow-400" />
-                      <span className="font-medium text-yellow-300">Download App</span>
+                      <span className="font-medium text-yellow-300">
+                        Download App
+                      </span>
                     </div>
                     <div className="space-y-2">
                       <a
@@ -995,11 +1149,17 @@ const Header = () => {
                         onClick={handleCloseAllMenus}
                       >
                         <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
-                          <span className="text-white font-bold text-xs">G</span>
+                          <span className="text-white font-bold text-xs">
+                            G
+                          </span>
                         </div>
                         <div>
-                          <div className="text-gray-300 text-xs">Google Play</div>
-                          <div className="text-yellow-300 text-xs font-bold">Download Now</div>
+                          <div className="text-gray-300 text-xs">
+                            Google Play
+                          </div>
+                          <div className="text-yellow-300 text-xs font-bold">
+                            Download Now
+                          </div>
                         </div>
                       </a>
 
@@ -1011,11 +1171,15 @@ const Header = () => {
                         onClick={handleCloseAllMenus}
                       >
                         <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                          <span className="text-white font-bold text-xs">A</span>
+                          <span className="text-white font-bold text-xs">
+                            A
+                          </span>
                         </div>
                         <div>
                           <div className="text-gray-300 text-xs">App Store</div>
-                          <div className="text-yellow-300 text-xs font-bold">Download Now</div>
+                          <div className="text-yellow-300 text-xs font-bold">
+                            Download Now
+                          </div>
                         </div>
                       </a>
                     </div>
@@ -1027,12 +1191,20 @@ const Header = () => {
                   {isAuthenticated ? (
                     <>
                       <div className="mb-3">
-                        <div className="text-xs text-gray-400">Signed in as</div>
-                        <div className="text-yellow-300 font-bold truncate text-sm">{user?.email}</div>
+                        <div className="text-xs text-gray-400">
+                          Signed in as
+                        </div>
+                        <div className="text-yellow-300 font-bold truncate text-sm">
+                          {user?.email}
+                        </div>
                       </div>
 
                       <Link
-                        to={user?.role === 'tenant' ? '/tenant/dashboard' : '/owner/dashboard'}
+                        to={
+                          user?.role === "tenant"
+                            ? "/tenant/dashboard"
+                            : "/owner/dashboard"
+                        }
                         className="flex items-center space-x-2 w-full px-2 py-2 rounded-lg text-gray-300 hover:text-yellow-300 hover:bg-gray-800/50 transition-all duration-200 mb-2 text-sm"
                         onClick={handleCloseAllMenus}
                       >
@@ -1067,7 +1239,9 @@ const Header = () => {
 
                 {/* Services Grid for Mobile */}
                 <div className="p-3 border-t border-yellow-500/20">
-                  <h3 className="text-yellow-300 font-bold mb-3 text-sm text-center">Our Services</h3>
+                  <h3 className="text-yellow-300 font-bold mb-3 text-sm text-center">
+                    Our Services
+                  </h3>
                   <div className="grid grid-cols-3 gap-2">
                     {services.map((service, index) => (
                       <div
@@ -1075,9 +1249,13 @@ const Header = () => {
                         className="flex flex-col items-center p-2 rounded-lg bg-gray-900/50 border border-yellow-500/10 hover:border-yellow-500/30 transition-all duration-200"
                       >
                         <div className="p-1.5 bg-yellow-500/10 rounded-lg mb-1">
-                          {React.cloneElement(service.icon, { className: "w-3.5 h-3.5 text-yellow-400" })}
+                          {React.cloneElement(service.icon, {
+                            className: "w-3.5 h-3.5 text-yellow-400",
+                          })}
                         </div>
-                        <span className="text-yellow-300 font-bold text-xs text-center">{service.title}</span>
+                        <span className="text-yellow-300 font-bold text-xs text-center">
+                          {service.title}
+                        </span>
                       </div>
                     ))}
                   </div>

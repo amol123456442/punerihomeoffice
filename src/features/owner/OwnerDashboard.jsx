@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import logo from "../../assets/images/logo.png";
 import {
   Home,
   Building,
@@ -578,7 +579,8 @@ function OwnerDashboard() {
 
               <div className="flex items-center cursor-pointer">
                 <div className="text-xl font-bold text-blue-600">
-                  Puneri Homes
+                  {/* <img src={logo} alt="Puneri Homes Logo" className="h-10 lg:h-10 w-auto" /> */}
+                  <p>Puneri Homes</p>
                 </div>
               </div>
             </div>

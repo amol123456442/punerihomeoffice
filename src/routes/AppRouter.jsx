@@ -18,6 +18,7 @@ import News from "../pages/Articlesandnews/News";
 import OwnerDashboard from "../features/owner/OwnerDashboard";
 import Header from "../components/layout/Header/Header";
 import OwnerProperties from "../features/owner/OwnerProperties";
+import OTPVerification from "../features/auth/components/OTPVerification";
 
 // Layout Components
 const MainLayout = ({ children }) => {
@@ -32,6 +33,11 @@ const MainLayout = ({ children }) => {
 
 const OwnerLayout = ({ children }) => {
   // Owner layout doesn't have main header/footer
+  return <>{children}</>;
+};
+
+const AuthLayout = ({ children }) => {
+  // Auth layout - no header, no footer
   return <>{children}</>;
 };
 
@@ -139,24 +145,6 @@ const AppRoutes = () => {
       />
 
       <Route
-        path="/register"
-        element={
-          <MainLayout>
-            <RegisterForm />
-          </MainLayout>
-        }
-      />
-
-      <Route
-        path="/login"
-        element={
-          <MainLayout>
-            <LoginForm />
-          </MainLayout>
-        }
-      />
-
-      <Route
         path="/owner/insights"
         element={
           <MainLayout>
@@ -165,7 +153,35 @@ const AppRoutes = () => {
         }
       />
 
-      {/* Owner Dashboard Route - NO Header/Footer */}
+      {/* Auth Routes - NO Header/Footer */}
+      <Route
+        path="/register"
+        element={
+          <AuthLayout>
+            <RegisterForm />
+          </AuthLayout>
+        }
+      />
+
+      <Route
+        path="/login"
+        element={
+          <AuthLayout>
+            <LoginForm />
+          </AuthLayout>
+        }
+      />
+
+      <Route
+        path="/otp-verification"
+        element={
+          <AuthLayout>
+            <OTPVerification />
+          </AuthLayout>
+        }
+      />
+
+      {/* Owner Dashboard Routes - NO Header/Footer */}
       <Route
         path="/owner/dashboard_section"
         element={
